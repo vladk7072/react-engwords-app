@@ -12,7 +12,10 @@
   @apply font-medium flex justify-between items-center w-[100%] pl-3 pb-5 pt-2;
 }
 .button {
-  @apply px-4 py-2 flex items-center border-2 border-[#988371] rounded-xl hover:cursor-pointer select-none active:bg-[#c9b7a7];
+  @apply px-4 py-2 flex items-center border-2 border-[#988371] rounded-xl hover:cursor-pointer select-none;
+  &:active{
+    background-color: #c9b7a7;
+  }
 }
 .word {
   @apply rounded w-[100%] text-center px-1 py-[5%] sm:px-2 sm:py-[10%] h-[100%] flex flex-col justify-around;
