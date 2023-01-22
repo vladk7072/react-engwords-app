@@ -80,13 +80,13 @@ export const AddPage: FC<PropsType> = ({ time }) => {
             />
             {pending && (
               <svg
+                className="ml-2"
                 xmlns="http://www.w3.org/2000/svg"
                 xmlnsXlink="http://www.w3.org/1999/xlink"
                 width="60px"
                 height="60px"
                 viewBox="0 0 100 100"
                 preserveAspectRatio="xMidYMid"
-                className="ml-2"
               >
                 <g transform="translate(26.666666666666668,26.666666666666668)">
                   <rect x="-20" y="-20" width="40" height="40" fill="#c2aa94">
