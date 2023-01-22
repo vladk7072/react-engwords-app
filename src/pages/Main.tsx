@@ -15,14 +15,15 @@ type CardType = {
   translate: string;
 };
 type PropsType = {
-  time: string
-}
+  time: string;
+  error: string;
+};
 
-export const Main: FC<PropsType>  = ({ time }) => {
+export const Main: FC<PropsType> = ({ time, error }) => {
   const swiperNavPrevref = useRef(null);
   const swiperNavNextref = useRef(null);
 
-  const [cards, setCards] = useState<CardType[]>();
+  const [cards, setCards] = useState<CardType[] | undefined>();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,7 +40,7 @@ export const Main: FC<PropsType>  = ({ time }) => {
     <div className="wrapper">
       <Top time={time} />
       <div className="main-slider">
-        {cards ? (
+        {cards && cards.length > 0 ? (
           <Swiper
             modules={[Navigation, EffectCards]}
             speed={300}
@@ -119,6 +120,16 @@ export const Main: FC<PropsType>  = ({ time }) => {
               </rect>
             </g>
           </svg>
+        )}
+        {cards?.length === 0 && (
+          <div className="text-center my-3 font-semibold">
+            Add a new word
+          </div>
+        )}
+        {error && (
+          <div className="text-center my-3 font-semibold text-red-600">
+            {error}
+          </div>
         )}
       </div>
       <Navbar

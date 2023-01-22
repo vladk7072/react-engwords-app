@@ -19,7 +19,7 @@ export const Navbar: FC<PropsType> = ({
       <div ref={swiperNavNextref}>
         <Button title="next" right={true} />
       </div>
-      <Link to={"/adding-words"} className="px-3 py-3 ml-4">
+      <Link to={"/adding-words"} className="px-3 py-3 mx-4">
         <svg
           className="w-5 h-5 hover:cursor-pointer"
           xmlns="http://www.w3.org/2000/svg"
