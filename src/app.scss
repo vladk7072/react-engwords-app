@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .main {
-  @apply h-[100vh] bg-[#efdac7] flex items-center justify-center px-3 font-sans font-normal relative;
+  @apply h-[100vh] bg-[#efdac7] flex items-center justify-center px-3 font-sans font-normal;
 }
 .wrapper {
   @apply max-w-sm mx-auto w-[100%] h-[90vh] overflow-hidden border-2 border-[#988371] rounded-2xl flex items-center justify-between flex-col px-3 pb-4 pt-2 sm:px-4 sm:pb-6 sm:pt-3;
@@ -31,6 +31,9 @@
 }
 .input {
   @apply my-9 py-3 px-5 max-w-[100%] w-[100%] rounded-xl border-2 border-[#988371] font-medium text-lg text-[#000] focus:outline-none relative;
+}
+.vis-hidden{
+  visibility: hidden;
 }
 
 .main-slider {

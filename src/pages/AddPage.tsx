@@ -11,11 +11,6 @@ type PropsType = {
 };
 
 export const AddPage: FC<PropsType> = ({ time }) => {
-  const textState = [
-    { id: 1, text: "next" },
-    { id: 2, text: "push" },
-  ];
-
   const [numArray, setNumArray] = useState(0);
   const [valueFirst, setValueFirst] = useState("");
   const [valueSecond, setValueSecond] = useState("");
@@ -56,6 +51,18 @@ export const AddPage: FC<PropsType> = ({ time }) => {
     }
   };
 
+  const watchKeyHandler = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      if (valueFirst && valueSecond.length === 0) {
+        nextInput();
+        console.log(valueFirst);
+      }
+      if (valueFirst && valueSecond) {
+        pushFetch();
+      }
+    }
+  };
+
   return (
     <div className="wrapper">
       <Top time={time} back={true} />
@@ -69,6 +76,7 @@ export const AddPage: FC<PropsType> = ({ time }) => {
               placeholder="enter the english word"
               value={valueSecond}
               onChange={(e) => setValueSecond(e.currentTarget.value)}
+              onKeyDown={(e) => watchKeyHandler(e)}
             />
             {pending && (
               <svg
@@ -142,6 +150,7 @@ export const AddPage: FC<PropsType> = ({ time }) => {
             placeholder="enter the english word"
             value={valueFirst}
             onChange={(e) => setValueFirst(e.currentTarget.value)}
+            onKeyDown={(e) => watchKeyHandler(e)}
           />
         )}
       </div>
@@ -151,12 +160,12 @@ export const AddPage: FC<PropsType> = ({ time }) => {
             <Button title={"back"} left={true} />
           </div>
           <div onClick={() => pushWord()}>
-            <Button title={textState[numArray].text} right={true} />
+            <Button title={"push"} right={true} />
           </div>
         </div>
       ) : (
         <div onClick={() => nextInput()}>
-          <Button title={textState[numArray].text} right={true} />
+          <Button title={"next"} right={true} />
         </div>
       )}
     </div>

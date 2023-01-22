@@ -8,6 +8,7 @@ import "swiper/css/effect-cards";
 import { Top } from "../components/Top";
 import { Word } from "../components/Word";
 import { Navbar } from "../components/Navbar";
+import { Link } from "react-router-dom";
 
 type CardType = {
   id: number;
@@ -121,17 +122,20 @@ export const Main: FC<PropsType> = ({ time, error }) => {
             </g>
           </svg>
         )}
-        {cards?.length === 0 && (
-          <div className="text-center my-3 font-semibold">
-            Add a new word
-          </div>
-        )}
-        {error && (
-          <div className="text-center my-3 font-semibold text-red-600">
-            {error}
-          </div>
-        )}
       </div>
+      {cards && cards.length === 0 && (
+        <Link
+          to="/adding-words"
+          className="text-center my-3 font-semibold cursor-pointer"
+        >
+          Add a new word
+        </Link>
+      )}
+      {error && (
+        <div className="text-center my-3 font-semibold text-red-600">
+          {error}
+        </div>
+      )}
       <Navbar
         swiperNavPrevref={swiperNavPrevref}
         swiperNavNextref={swiperNavNextref}

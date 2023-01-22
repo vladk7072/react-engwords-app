@@ -5,27 +5,27 @@ import { Main } from "./pages/Main";
 import { AddPage } from "./pages/AddPage";
 
 export const App = () => {
+
   const [error, setError] = useState("");
 
+  const handleOffline = () => {
+    setError("You are offline");
+  }
+  const handleOnline = () => {
+    setError("You are online");
+  }
   useEffect(() => {
-    window.addEventListener("offline", function (e: any) {
-      setError("Internet error ");
-    });
-    window.addEventListener("online", function (e: any) {
-      setError("Internet error ");
-    });
+    window.addEventListener("offline", handleOffline);
+    window.addEventListener("online", handleOnline);
+  
     return () => {
-      window.removeEventListener("offline", function (e: any) {
-        setError("");
-      });
-      window.removeEventListener("online", function (e: any) {
-        setError("");
-      });
+      window.removeEventListener("offline", handleOffline);
+      window.removeEventListener("online", handleOnline);
     };
   }, []);
-
+  
   const [time, setTime] = useState("");
-
+  
   setInterval(() => {
     var date = new Date();
     var datetime = date.toLocaleTimeString("uk-UA");
